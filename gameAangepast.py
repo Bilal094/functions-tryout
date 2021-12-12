@@ -19,16 +19,18 @@ def intro():
     print('| water en je drink er 1 op wegens de dorst die door de hitte is veroorzaakt. Daarnaast heb |')
     print('| je een tent bij je en een slaapzak. Het is op dit moment het heetste moment van de dag... |')
     print('---------------------------------------------------------------------------------------------')
-    sleep(10)
-    print('Level-1: Je loopt al een eindje door het zand en er blijkt geen hoop te zijn. Wat doe je nu?')
-    sleep(2.5)
+    sleep(15)
 
 intro()
-print('1: Je loopt nog een eindje door in de hoop dat je misschien een klein onderdakje tegenkomt')
-print('2: Je besluit om op een kleine rots te gaan zitten en uit te rusten')
+def lvl1Checkpoint():
+    global lvl1
+    print('Level-1: Je loopt al een eindje door het zand en er blijkt geen hoop te zijn. Wat doe je nu?')
+    print('1: Je loopt nog een eindje door in de hoop dat je misschien een klein onderdakje tegenkomt')
+    print('2: Je besluit om op een kleine rots te gaan zitten en uit te rusten')
+    lvl1 = input('Type je keuze door alleen het cijfer in te typen ')
+    sleep(0.5)
 
-lvl1 = input('Type je keuze door alleen het cijfer in te typen ')
-sleep(0.5)
+lvl1Checkpoint()
 if lvl1 == '1':
     print('Level-2: Je hebt een grot gevonden die naar een onbekende plek leidt')
     sleep(1)
@@ -37,7 +39,7 @@ if lvl1 == '1':
     lvl2 = input('')
     if lvl2 == '1':
         sleep(0.5)
-        print('Level-2: Het is veelste donker om te kunnen zien dus je gebruikt je zaklamp')
+        print('Level-3: Het is veelste donker om te kunnen zien dus je gebruikt je zaklamp')
         sleep(1)
         print('Je schijnt je zaklamp op een reuze, giftige zandadder!')
         sleep(0.5)
@@ -115,6 +117,7 @@ if lvl1 == '1':
                                 print('Je probeert te onderhandelen maar de vijandige nomaden zijn er niet van gediend')
                                 sleep(1.5)
                                 lose()
+                                lvl1Checkpoint()
                             elif lvl8 == '2':
                                 print('Je gebruikt je dolk die je had gekocht')
                                 sleep(1.5)
@@ -138,6 +141,7 @@ if lvl1 == '1':
                                     print('Je gebruikt je dolk maar die breekt in het midden van de gevecht')
                                     sleep(2)
                                     print('Health = '+ str(Health) +', game over!')
+                                    lvl1Checkpoint()
                             else:
                                 foutkeuze()
                 else:
@@ -158,6 +162,7 @@ if lvl1 == '1':
                         print('...maar bijt jou voordat je je handen op hem legt')
                         sleep(1.5)
                         lose()
+                        lvl1Checkpoint()
                     else:
                         foutkeuze()
             elif lvl4 == '3':
@@ -177,6 +182,7 @@ if lvl1 == '1':
                     print('...totdat je de weg kwijt bent en verder niks kan doen dan alleen op de dood wachten')
                     sleep(1.5)
                     lose()
+                    lvl1Checkpoint()
                 elif lvl5 == '2':
                     print('Je klimt uit het gat...')
                     sleep(1.5)
@@ -194,53 +200,44 @@ if lvl1 == '1':
                     else:
                         print('Je hebt te weinig geld en/of je gezondheid is niet in orde, dus je werkt verder als een knecht en verdient bijna niets')
                         sleep(2)
-                        lose()
+                        print('Bad ending')
                 else:
                     foutkeuze()
         elif lvl3 == '2':
             print('Je probeert eromheen te lopen maar de slang was sneller en was in staat om jou te bijten en te doden')
-            from time import sleep
             sleep(1)
             lose()
+            lvl1Checkpoint()
         else:
             foutkeuze()
     elif lvl2 == '2':
         print('Je pakt je tent en zet hem op. Al gauw wordt het donker, dus je pakt ook je slaapzak erbij')
-        from time import sleep
         sleep(2)
         print('Het begint ook tegelijkertijd te gaan regenen, maar dat baart geen zorgen bij jou')
-        from time import sleep
         sleep(2)
         print('Je sluit je ogen terwijl het buiten de tent spettert met regen')
-        from time import sleep
         sleep(2.5)
         print('Verdrinking is de meest voorkomende doodsoorzaak in een woestijn, iets waar jij over zou twijfelen')
-        from time import sleep
         sleep(2.5)
         print('Het begint langzaam te vloeden terwijl jij niks doorhebt en jij aan het pitten bent...')
-        from time import sleep
         sleep(2.5)
         print('Het water reikt jouw mond en dringt zo je longen in en je \'verdrinkt\' in een zandwoestijn...')
-        from time import sleep
         sleep(3)
         lose()
+        lvl1Checkpoint()
     else:
         foutkeuze()
 elif lvl1 == '2':
-    from time import sleep
     sleep(0.5)
     print('Level-2: Je krijgt het veelste warm van de zon en je hebt weer dorst')
-    from time import sleep
     sleep(1.5)
     print('1: Drink nog 1 fles')
     print('2: Volhouden en hopen dat de dorst vanzelf verdwijnt')
     lvl2 = input('')
     if lvl2 == '1':
         print('Terwijl jij naar een fles aan het zoeken bent in je rugzak...')
-        from time import sleep
         sleep(1.5)
         print('...verschijnt er ineens een gestreepte hyena achter je rug om!')
-        from time import sleep
         sleep(1.5)
         print('Level-2: Wat doe je nu?')
         print('1: Vecht met de hyena')
@@ -249,41 +246,35 @@ elif lvl1 == '2':
         lvl3 = input('')
         if lvl3 == '1':
             print('Je dacht dapper te zijn om tegen de hyena te vechten...')
-            from time import sleep
             sleep(1.5)
             print('...maar de gestreepte hyena is sterker dan jij en wint de duel')
-            from time import sleep
             sleep(1.5)
             lose()
+            lvl1Checkpoint()
         elif lvl3 == '2':
             print('Je valt neer en doet alsof je dood bent')
-            from time import sleep
             sleep(1.5)
             print('maar de hyena trapt er niet en verscheurt je  helemaal total-loss')
-            from time import sleep
             sleep(1.5)
             lose()
+            lvl1Checkpoint()
         elif lvl3 == '3':
             print('Uit angst schreeuw je het allemaal uit')
-            from time import sleep
             sleep(1.5)
             print('Zo hard dat er nomaden die in de buurt zitten het horen')
-            from time import sleep
             sleep(1.5)
             print('Al gauw zien ze jou, doden de hyena en vangen ze jou open en je bent gered!')
-            from time import sleep
             sleep(1.5)
             win()
         else:
             foutkeuze()
     elif lvl2 == '2':
         print('Je probeert het nog even vol te houden...')
-        from time import sleep
         sleep(1.5)
         print('...totdat je neervalt van uitdroging')
-        from time import sleep
         sleep(1.5)
         lose()
+        lvl1Checkpoint()
     else:
         foutkeuze()
 else:
